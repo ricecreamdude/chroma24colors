@@ -1,6 +1,4 @@
 'use strict'
-
-//Express is pretty important for our server.
 const express = require('express');
 const app = express();
 //Middleware as they are created

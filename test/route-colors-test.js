@@ -6,8 +6,25 @@ let serverURI = 'localhost:3000/api/colors'
 
 
 
-describe('SETTING ROUTE' , () => {
+describe('COLOR SETTINGS ROUTE' , () => {
+  //start the server
+  before( (done) => {
 
+    done();
+  })
+
+  //end the server
+  after( (done) => {
+
+    done();
+  })
+
+  describe('Post Requests' , () => {
+    expect('should post a new color' , () => {
+      request.post(serverURI)
+        .send()
+    });
+  });
   describe('Get Requests to /api/colors' , () => {
     expect('should fetch 10 color settings' , (done) => {
       request.get(serverURI)
@@ -18,8 +35,16 @@ describe('SETTING ROUTE' , () => {
           done();
         });
     });
-    expect('should fetch a specific color combination with a given ID')
-
+    expect('should fetch a specific color combination with a given ID' , (done) => {
+      var testID = '/12345';
+      request.get(serverURI + testID)
+        .end( (err , res) => {
+          if (err) throw err;
+          expect(res.status).to.equal(200);
+          expect(res.body.colorsArray[0].id).to.equal('12345');
+          done();
+        })
+    });
     expect('ERROR: should throw an error if the color does not exist' , (done) => {
       request.get(serverURI + '/badRoutePathName')
         .end( (err, res) => {
@@ -29,11 +54,6 @@ describe('SETTING ROUTE' , () => {
           done();
         });
     });
-
-
-  });
-  describe('Post Requests' , () => {
-
   });
   describe('Put Requests' , () => {
 
