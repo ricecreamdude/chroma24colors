@@ -1,5 +1,5 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 //Send loading screen info (User profile and top 10 color sets) and favorite color settings
 app.get('/' , (req, res) => {

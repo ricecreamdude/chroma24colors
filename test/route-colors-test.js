@@ -2,14 +2,11 @@ const request = require('superagent');
 const expect = require('chai').expect;
 const server = require( __dirname + '/../server.js');
 
-let serverURI = 'localhost:3000/api/colors'
-
-
+let serverURI = 'localhost:3000/api/colors';
 
 describe('COLOR SETTINGS ROUTE' , () => {
   //start the server
   before( (done) => {
-
     done();
   })
 
@@ -22,9 +19,9 @@ describe('COLOR SETTINGS ROUTE' , () => {
   describe('Post Requests' , () => {
     expect('should post a new color' , () => {
       request.post(serverURI)
-        .send()
+        .send({name:'Test Color' , colorObj: {}, {}})
     });
-  });
+  }); //End Post
   describe('Get Requests to /api/colors' , () => {
     expect('should fetch 10 color settings' , (done) => {
       request.get(serverURI)
@@ -54,11 +51,11 @@ describe('COLOR SETTINGS ROUTE' , () => {
           done();
         });
     });
-  });
+  }); //End GET
   describe('Put Requests' , () => {
 
-  });
+  }); //End PUT
   describe('Delete Requests' , () => {
 
-  });
+  });//End DEL
 });
