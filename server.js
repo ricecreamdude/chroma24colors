@@ -5,14 +5,14 @@ const app = express();
 
 //Routes
 // const devRoute = require( __dirname + './routes/devRoute');
-const gloverRoute = require( __dirname + './routes/gloverRoute');
+const gloverRoute = require( __dirname + '/routes/gloverRoute');
 // const settingRoute = require( __dirname + './routes/settingRoute');
 
 //Middleware as they are created
 
 //Require routes
 // app.on('/api/dev', devRoute);
-app.on('/api/dev', gloverRoute);
+app.use('/api/dev', gloverRoute);
 // app.on('/api/dev', settingRoute);
 
 //Server construction after this point
